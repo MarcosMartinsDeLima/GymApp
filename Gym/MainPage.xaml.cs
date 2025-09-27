@@ -1,24 +1,48 @@
-﻿namespace Gym
+﻿using Gym.Models;
+using Gym.Repository;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+
+namespace Gym
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
+        public ObservableCollection<Treino> Treinos { get; set; } = new();
+        private readonly TreinoRepository _treinoRepository;
 
-        public MainPage()
+        public ICommand ItemSelectedCommand { get; }
+
+        public MainPage(TreinoRepository treinoRepository)
         {
             InitializeComponent();
+            _treinoRepository = treinoRepository;
+
+            ItemSelectedCommand = new Command<int>(OnItemSelected);
+
+            BindingContext = this;
+
+            CarregarTreinos();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+
+        private async void CarregarTreinos()
         {
-            count++;
+            var treinos = await _treinoRepository.GetTreinosAsync();
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+            if (treinos.Count != 0)
+            {
+                foreach (var t in treinos)
+                {
+                    Treinos.Add(t);
+                }
+            }
+            
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private async void OnItemSelected(int treinoId)
+        {
+            await Navigation.PushAsync(new TreinoPage(_treinoRepository, treinoId));
         }
     }
 }
