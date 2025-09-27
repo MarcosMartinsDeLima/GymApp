@@ -68,6 +68,18 @@ namespace Gym.Repository
             return treino;
         }
 
+        public async Task AtualizarPeso(int exercicioId, int novoPeso)
+        {
+            var exercicio = await _db.Table<Exercicio>()
+                                          .FirstOrDefaultAsync(e => e.Id == exercicioId);
+
+            if (exercicio == null)
+                throw new InvalidOperationException($"Exercício com Id {exercicioId} não encontrado.");
+
+            exercicio.Peso = novoPeso.ToString();
+            await _db.UpdateAsync(exercicio);
+        }
+
         #endregion
     }
 }

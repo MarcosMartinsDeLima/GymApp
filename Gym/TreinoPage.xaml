@@ -3,37 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gym.TreinoPage"
              Title="TreinoPage">
-    <VerticalStackLayout Padding="10">
 
-        <Label Text="{Binding TreinoLetra ,StringFormat='Treino {0}'}" 
-               FontSize="24" 
-               FontAttributes="Bold" 
-               TextColor="White"
-               HorizontalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="16">
 
-        <Label Text="Exercícios" 
-               FontSize="18" 
-               FontAttributes="Bold" 
-               TextColor="White"
-               Margin="0,10,0,5"/>
+            <!-- Header com letra do treino e timers -->
+            <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="20">
+                <Label Text="{Binding TreinoLetra, StringFormat='Treino {0}'}"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#9880E5"/>
+                <Label Text="{Binding TempoTreino}"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#9880E5"/>
+                <Label Text="{Binding TempoDescanso}"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#9880E5"
+                       IsVisible="{Binding MostraDescanso}"/>
+            </HorizontalStackLayout>
 
-        <CollectionView ItemsSource="{Binding Exercicios}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-            </CollectionView.ItemsLayout>
+            <!-- Lista de Exercícios -->
+            <CollectionView ItemsSource="{Binding Exercicios}" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    <!-- aqui aumentei para 20 -->
+                </CollectionView.ItemsLayout>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BackgroundColor="#393d42" Padding="10" CornerRadius="8">
-                        <HorizontalStackLayout Spacing="12">
-                            <Label Text="{Binding Nome}" TextColor="White" FontSize="16"/>
-                            <Label Text="{Binding Series}" TextColor="White"/>
-                            <Label Text="{Binding Peso}" TextColor="White"/>
-                        </HorizontalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#393d42" CornerRadius="8" Padding="10" Margin="0,0,0,12">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Nome}" TextColor="#9880E5" FontAttributes="Bold"/>
+                                <Label Text="{Binding Series, StringFormat='Séries: {0}'}" TextColor="White"/>
+                                <Label Text="{Binding Peso, StringFormat='Peso: {0} kg'}" TextColor="White"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-    </VerticalStackLayout>
+            <!-- Botões de controle -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="Play/Pause Treino" Clicked="ToggleTreino"/>
+                <Button Text="Play/Pause Descanso" Clicked="ToggleDescanso"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
