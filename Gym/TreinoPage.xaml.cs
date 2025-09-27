@@ -93,6 +93,7 @@ public partial class TreinoPage : ContentPage
 
     private void ToggleDescanso(object sender, EventArgs e)
     {
+        _tempoDescansoMs = 0;
         _rodandoDescanso = !_rodandoDescanso;
     }
 
