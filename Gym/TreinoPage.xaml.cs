@@ -1,7 +1,7 @@
+using CommunityToolkit.Maui.Views;
 using Gym.Models;
 using Gym.Repository;
-
-
+using Gym.View;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -111,6 +111,32 @@ public partial class TreinoPage : ContentPage
                 await _treinoRepository.AtualizarPeso(exercicioId, novoPeso);
                 ex.Peso = novoPeso.ToString();
                 OnPropertyChanged(nameof(Exercicios));
+            }
+        }
+    }
+
+    private async void AlterarPeso_Clicked(object sender, EventArgs e)
+    {
+        if (sender is Button btn && btn.CommandParameter is int exercicioId)
+        {
+            // abre o popup
+            var popup = new AlterarPesoPopup(exercicioId);
+            var result = await this.ShowPopupAsync(popup);
+
+            var novoPeso = result?.ToString();
+
+            if (novoPeso !=  null)
+            {
+                // Atualiza no banco
+                await _treinoRepository.AtualizarPeso(exercicioId, novoPeso);
+
+                // Atualiza na UI
+                var exercicio = Exercicios.FirstOrDefault(x => x.Id == exercicioId);
+                if (exercicio != null)
+                {
+                    exercicio.Peso = novoPeso.ToString();
+                    CarregarExercicios();
+                }
             }
         }
     }

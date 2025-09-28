@@ -1,4 +1,5 @@
-﻿using Gym.Repository;
+﻿using CommunityToolkit.Maui;
+using Gym.Repository;
 using Microsoft.Extensions.Logging;
 
 namespace Gym
@@ -10,6 +11,7 @@ namespace Gym
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

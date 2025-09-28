@@ -37,7 +37,11 @@
                             <VerticalStackLayout>
                                 <Label Text="{Binding Nome}" TextColor="#9880E5" FontAttributes="Bold"/>
                                 <Label Text="{Binding Series, StringFormat='Séries: {0}'}" TextColor="White"/>
-                                <Label Text="{Binding Peso, StringFormat='Peso: {0} kg'}" TextColor="White"/>
+                                <Label Text="{Binding Peso, StringFormat='Peso: {0}'}" TextColor="White"/>
+
+                                <Button Text="Alterar Peso"
+                        CommandParameter="{Binding Id}"
+                        Clicked="AlterarPeso_Clicked"/>
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
