@@ -34,15 +34,18 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BackgroundColor="#393d42" CornerRadius="8" Padding="10" Margin="0,0,0,12">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Nome}" TextColor="#9880E5" FontAttributes="Bold"/>
-                                <Label Text="{Binding Series, StringFormat='Séries: {0}'}" TextColor="White"/>
-                                <Label Text="{Binding Peso, StringFormat='Peso: {0}'}" TextColor="White"/>
+                            <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="12">
+                                <VerticalStackLayout HorizontalOptions="StartAndExpand" Margin="0,0,20,0">
+                                    <Label  WidthRequest="200" Text="{Binding Nome}" TextColor="#9880E5" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Series, StringFormat='Séries: {0}'}" TextColor="White"/>
+                                    <Label Text="{Binding Peso, StringFormat='Peso: {0}'}" TextColor="White"/>
 
+                                </VerticalStackLayout >
                                 <Button Text="Alterar Peso"
-                        CommandParameter="{Binding Id}"
-                        Clicked="AlterarPeso_Clicked"/>
-                            </VerticalStackLayout>
+                                    CommandParameter="{Binding Id}"
+                                    Clicked="AlterarPeso_Clicked"
+                                        HorizontalOptions="End"/>
+                            </HorizontalStackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

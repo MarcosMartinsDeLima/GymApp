@@ -59,7 +59,6 @@ public partial class TreinoPage : ContentPage
 
     private void IniciarTimers()
     {
-        // Timer do treino
         Dispatcher.StartTimer(TimeSpan.FromMilliseconds(100), () =>
         {
             if (_rodandoTreino)
@@ -71,7 +70,6 @@ public partial class TreinoPage : ContentPage
             return true;
         });
 
-        // Timer do descanso
         Dispatcher.StartTimer(TimeSpan.FromMilliseconds(100), () =>
         {
             if (_rodandoDescanso)
@@ -119,7 +117,6 @@ public partial class TreinoPage : ContentPage
     {
         if (sender is Button btn && btn.CommandParameter is int exercicioId)
         {
-            // abre o popup
             var popup = new AlterarPesoPopup(exercicioId);
             var result = await this.ShowPopupAsync(popup);
 
@@ -127,10 +124,9 @@ public partial class TreinoPage : ContentPage
 
             if (novoPeso !=  null)
             {
-                // Atualiza no banco
+                
                 await _treinoRepository.AtualizarPeso(exercicioId, novoPeso);
 
-                // Atualiza na UI
                 var exercicio = Exercicios.FirstOrDefault(x => x.Id == exercicioId);
                 if (exercicio != null)
                 {
