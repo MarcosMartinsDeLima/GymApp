@@ -14,7 +14,7 @@
         <!-- Entrada de peso -->
         <Entry x:Name="PesoEntry"
                Placeholder="Digite o novo peso"
-               Keyboard="Numeric"
+               Keyboard="Text"
                HorizontalOptions="FillAndExpand"/>
 
         <!-- Botões -->
