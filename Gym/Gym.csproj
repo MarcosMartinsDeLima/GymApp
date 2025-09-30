@@ -48,8 +48,8 @@
 		<AndroidKeyStore>true</AndroidKeyStore>
 		<AndroidSigningKeyStore>C:\Users\marco\AppData\Local\Xamarin\Mono for Android\Keystore\man\man.keystore</AndroidSigningKeyStore>
 		<AndroidSigningKeyAlias>man</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass>senha</AndroidSigningKeyPass>
-		<AndroidSigningStorePass>senha</AndroidSigningStorePass>
+		<AndroidSigningKeyPass>cuzinho</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>cuzinho</AndroidSigningStorePass>
 	</PropertyGroup>
 
 	<ItemGroup>

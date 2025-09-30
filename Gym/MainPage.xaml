@@ -6,7 +6,6 @@
 
     <VerticalStackLayout BackgroundColor="#171718" Padding="10">
 
-        <!-- Botão Editar Treino -->
         <Frame BackgroundColor="#393d42" Padding="15" CornerRadius="8" Margin="0,120,0,20">
             <HorizontalStackLayout>
                 <Image Source="a.jpg" WidthRequest="60" HeightRequest="60" Aspect="AspectFill"/>
@@ -18,7 +17,6 @@
             </HorizontalStackLayout>
         </Frame>
 
-        <!-- Lista de Treinos -->
         <CollectionView ItemsSource="{Binding Treinos}" >
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
@@ -35,8 +33,7 @@
                             </ContentView.GestureRecognizers>
 
                             <HorizontalStackLayout  Spacing="12">
-                            <!-- Bolinha com letra -->
-                            <Frame WidthRequest="50" HeightRequest="50" 
+                                <Frame WidthRequest="50" HeightRequest="50" 
                                    CornerRadius="25" 
                                    BackgroundColor="#9880E5"
                                    VerticalOptions="Center"
@@ -48,7 +45,6 @@
                                         FontSize="16"/>
                             </Frame>
 
-                            <!-- Textos -->
                             <VerticalStackLayout Margin="10,0,0,0" HorizontalOptions="FillAndExpand">
                                 <Label Text="Grupo Muscular" 
                                        TextColor="White" 

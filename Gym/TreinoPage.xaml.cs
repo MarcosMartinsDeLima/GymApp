@@ -13,8 +13,8 @@ public partial class TreinoPage : ContentPage
     public ObservableCollection<Exercicio> Exercicios { get; set; } = new();
     public string TreinoLetra { get; set; } = "";
 
-    public string TempoTreino { get; set; } = "00:00";
-    public string TempoDescanso { get; set; } = "00:00";
+    public string TempoTreino { get; set; } = "00:00:00";
+    public string TempoDescanso { get; set; } = "00:00:00";
     public bool MostraDescanso { get; set; } = false;
 
     private readonly TreinoRepository _treinoRepository;
@@ -64,7 +64,7 @@ public partial class TreinoPage : ContentPage
             if (_rodandoTreino)
             {
                 _tempoTreinoMs += 100;
-                TempoTreino = TimeSpan.FromMilliseconds(_tempoTreinoMs).ToString(@"mm\:ss");
+                TempoTreino = TimeSpan.FromMilliseconds(_tempoTreinoMs).ToString(@"mm\:ss\.ff");
                 OnPropertyChanged(nameof(TempoTreino));
             }
             return true;
@@ -75,7 +75,7 @@ public partial class TreinoPage : ContentPage
             if (_rodandoDescanso)
             {
                 _tempoDescansoMs += 100;
-                TempoDescanso = TimeSpan.FromMilliseconds(_tempoDescansoMs).ToString(@"mm\:ss");
+                TempoDescanso = TimeSpan.FromMilliseconds(_tempoDescansoMs).ToString(@"mm\:ss\.ff");
                 MostraDescanso = true;
                 OnPropertyChanged(nameof(TempoDescanso));
                 OnPropertyChanged(nameof(MostraDescanso));

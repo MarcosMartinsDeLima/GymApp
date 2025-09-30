@@ -5,19 +5,18 @@
                x:Class="Gym.View.AlterarPesoPopup">
 
     <VerticalStackLayout Padding="20" Spacing="16" BackgroundColor="#1f1f1f" WidthRequest="300">
-        <!-- Título -->
         <Label Text="Alterar Peso" 
                FontSize="20" 
                FontAttributes="Bold" 
                HorizontalOptions="Center"/>
 
-        <!-- Entrada de peso -->
+        
         <Entry x:Name="PesoEntry"
                Placeholder="Digite o novo peso"
                Keyboard="Text"
                HorizontalOptions="FillAndExpand"/>
 
-        <!-- Botões -->
+        
         <HorizontalStackLayout Spacing="10" HorizontalOptions="FillAndExpand">
             <Button Text="Cancelar" 
                     Clicked="Cancelar_Clicked" 
