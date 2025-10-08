@@ -32,17 +32,15 @@ namespace Gym
 
             if (treinos.Count != 0)
             {
-                foreach (var t in treinos)
-                {
-                    Treinos.Add(t);
-                }
+                Treinos = new ObservableCollection<Treino>(treinos);
+                OnPropertyChanged(nameof(Treinos));
             }
             
         }
 
         private async void OnItemSelected(int treinoId)
         {
-            await Navigation.PushAsync(new TreinoPage(_treinoRepository, treinoId));
+            await Navigation.PushAsync(new TreinoPage(_treinoRepository, treinoId),false);
         }
     }
 }

@@ -48,8 +48,8 @@
 		<AndroidKeyStore>true</AndroidKeyStore>
 		<AndroidSigningKeyStore>C:\Users\marco\AppData\Local\Xamarin\Mono for Android\Keystore\man\man.keystore</AndroidSigningKeyStore>
 		<AndroidSigningKeyAlias>man</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass>cuzinho</AndroidSigningKeyPass>
-		<AndroidSigningStorePass>cuzinho</AndroidSigningStorePass>
+		<AndroidSigningKeyPass>senha</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>senha</AndroidSigningStorePass>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -95,5 +95,13 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 
+		<!-- 🔥 Compilação AOT (Ahead-of-Time) -->
+		<RunAOTCompilation>true</RunAOTCompilation>
+
+		<!-- 🧠 Usa o perfil híbrido (AOT parcial, balanceando tamanho e desempenho) -->
+		<AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
+
+	</PropertyGroup>
 </Project>
