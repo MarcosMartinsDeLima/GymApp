@@ -25,6 +25,8 @@ public partial class TreinoPage : ContentPage
     private int _tempoTreinoMs = 0;
     private int _tempoDescansoMs = 0;
 
+    private bool _isLeaving = false;
+
     public ICommand EditarPesoCommand { get; }
 
     public TreinoPage(TreinoRepository treinoRepository, int treinoId)
@@ -134,6 +136,32 @@ public partial class TreinoPage : ContentPage
                     CarregarExercicios();
                 }
             }
+        }
+    }
+
+
+
+    protected override bool OnBackButtonPressed()
+    {
+        ConfirmarSaidaAsync();
+        return true; 
+    }
+
+    private async void ConfirmarSaidaAsync()
+    {
+        if (_isLeaving)
+            return;
+
+        bool sair = await DisplayAlert(
+            "Sair do treino",
+            "Deseja realmente sair? O progresso atual será perdido.",
+            "Sim", "Cancelar"
+        );
+
+        if (sair)
+        {
+            _isLeaving = true;
+            await Navigation.PopAsync(); 
         }
     }
 }
